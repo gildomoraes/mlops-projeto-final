@@ -4,18 +4,15 @@ import sys, os, io, uuid, datetime, json, zipfile
 
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return 'Model Manager is running!'
-
 
 def try_or(fn, default=None):
     try:
         return fn()
     except:
         return default
-
 
 def logapp(jsoncontent: dict, sufix: str = None):
     try:
@@ -25,7 +22,6 @@ def logapp(jsoncontent: dict, sufix: str = None):
     except Exception as err:
         print(err)
         pass
-
 
 @app.route('/predict',methods=['GET','POST'])
 def predict(request = request):
@@ -70,7 +66,6 @@ def predict(request = request):
     logapp(jsoncontent=logg_track, sufix=reqtime.strftime("%Y%m%d-%H%M%S.%f"))
     return response
 
-
 @app.route('/download', methods=['GET', 'POST'])
 def download():
     FILEPATH = "./Log"
@@ -84,7 +79,6 @@ def download():
     response.headers.set('Content-Type', 'zip')
     response.headers.set('Content-Disposition', 'attachment', filename='Logs.zip')
     return response
-
 
 if __name__ == '__main__':
     args = sys.argv[1:]

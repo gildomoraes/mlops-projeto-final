@@ -43,7 +43,7 @@ sudo docker network create plat_network
 sudo docker network ls
 
 # Rodar o container baseado na imagem
-sudo docker run -d --network plat_network -p 10001:8080 --restart always --name serving01 platserver python servingmodel.py model.joblib 8080
+sudo docker run -d --network plat_network -p 10001:8080 --restart always --name serving01 platserver python servingmodel.py models/modelo01.joblib 8080
 
 # Para consultar a criação do container
 sudo docker ps
@@ -73,3 +73,6 @@ sudo docker rm <container_id>
 
 # Para remover diretórios
 rm -rf <nome repositório>
+
+# Excluir imagens sem nome
+sudo docker image prune
