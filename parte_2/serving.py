@@ -12,7 +12,6 @@ def call_home(request = request):
     return "Server is Running!"
 
 # Carregando o modelo previamente treinado
-#model = joblib.load('G:/Meu Drive/Gildo - Google Drive/3b. Acadêmico/MBA/14. Machine Learning Operation/c. Atividades e Trabalhos/Trabalho Final/mlops-projeto-final/parte_1/model.joblib')
 model = joblib.load('model.joblib')
 
 # Definindo a rota para previsões
@@ -37,7 +36,3 @@ def predict():
     
     # Retornando a mensagem de texto como JSON
     return jsonify(result)
-
-# Rodando a aplicação
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')

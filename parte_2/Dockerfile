@@ -30,8 +30,3 @@ VOLUME /Log
 EXPOSE 80
 EXPOSE 8080
 EXPOSE 5000
-
-# Comando para rodar o servidor Flask
-# CMD ["python", "serving.py"]
-CMD ["sh", "-c", "python serving.py & sleep 5 && python client.py"]
-# http://192.168.15.128:5000
