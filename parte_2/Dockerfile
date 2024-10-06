@@ -29,4 +29,3 @@ VOLUME /Log
 # Expõe para o HOST algumas portas, por padrão
 EXPOSE 80
 EXPOSE 8080
-EXPOSE 5000

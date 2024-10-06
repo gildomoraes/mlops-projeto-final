@@ -6,6 +6,7 @@ import numpy as np
 # Inicializando o app Flask
 app = Flask(__name__)
 
+# Definindo a Rota Inicial
 @app.route("/", methods=['GET', 'POST'])
 def call_home(request = request):
     print(request.values)
@@ -15,8 +16,8 @@ def call_home(request = request):
 model = joblib.load('model.joblib')
 
 # Definindo a rota para previsões
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route("/predict", methods=['GET', 'POST'])
+def call_predict(request = request):
     # Pegando os dados da requisição JSON
     data = request.get_json(force=True)
     
@@ -36,3 +37,7 @@ def predict():
     
     # Retornando a mensagem de texto como JSON
     return jsonify(result)
+
+# Rodando a aplicação
+if __name__ == '__main__':
+    app.run(port=8080, host='0.0.0.0')
