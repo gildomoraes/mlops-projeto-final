@@ -25,7 +25,7 @@ def call_predict(request = request):
     data_df = pd.DataFrame(data)
     
     # Fazendo a previsão com o modelo carregado
-    prediction = model.predict(data_df)
+    prediction = modelo.predict(data_df)
     
     # Transformando as previsões em mensagens personalizadas
     result = []
