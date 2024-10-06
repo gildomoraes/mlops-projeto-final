@@ -13,7 +13,7 @@ def call_home(request = request):
     return "Server is Running!"
 
 # Carregando o modelo previamente treinado
-model = joblib.load('model.joblib')
+modelo = joblib.load('models/modelo01.joblib')
 
 # Definindo a rota para previsões
 @app.route("/predict", methods=['GET', 'POST'])
