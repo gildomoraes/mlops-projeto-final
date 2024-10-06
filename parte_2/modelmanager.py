@@ -66,20 +66,6 @@ def predict(request = request):
     logapp(jsoncontent=logg_track, sufix=reqtime.strftime("%Y%m%d-%H%M%S.%f"))
     return response
 
-@app.route('/download', methods=['GET', 'POST'])
-def download():
-    FILEPATH = "./Log"
-    fileobj = io.BytesIO()
-    with zipfile.ZipFile(fileobj, 'w', zipfile.ZIP_DEFLATED) as zip_file:
-        for root, dirs, files in os.walk(FILEPATH):
-            for file in files:
-                zip_file.write(os.path.join(root, file))
-    fileobj.seek(0)
-    response = make_response(fileobj.read())
-    response.headers.set('Content-Type', 'zip')
-    response.headers.set('Content-Disposition', 'attachment', filename='Logs.zip')
-    return response
-
 if __name__ == '__main__':
     args = sys.argv[1:]
     if len(args) < 1:
